@@ -1,0 +1,179 @@
+.calendar-list {
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.calendar-list-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.add-calendar-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.add-calendar-btn:hover {
+  background-color: #2563eb;
+}
+
+.calendar-form {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.calendar-form input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.color-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.color-input label {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.color-input input[type="color"] {
+  width: 40px;
+  height: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.form-actions button[type="submit"] {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: #2563eb;
+}
+
+.form-actions button[type="button"] {
+  background-color: white;
+}
+
+.form-actions button[type="button"]:hover {
+  background-color: #f9fafb;
+}
+
+.calendars {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.calendar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s;
+}
+
+.calendar-item:hover {
+  background-color: #f9fafb;
+}
+
+.calendar-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.calendar-checkbox input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.calendar-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.calendar-name {
+  font-size: 0.875rem;
+  color: #111827;
+}
+
+.delete-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #fee2e2;
+}
+
+.no-calendars {
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
