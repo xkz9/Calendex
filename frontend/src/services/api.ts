@@ -1,17 +1,40 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
+function formatDetail(detail: unknown): string {
+  if (detail == null) return ''
+  if (typeof detail === 'string') return detail
+  if (Array.isArray(detail)) {
+    return detail
+      .map((e: { msg?: string }) => (typeof e?.msg === 'string' ? e.msg : JSON.stringify(e)))
+      .join('; ')
+  }
+  if (typeof detail === 'object') return JSON.stringify(detail)
+  return String(detail)
+}
+
 async function fetchAPI(endpoint: string, options: RequestInit = {}) {
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-  })
+  let response: Response
+  try {
+    response = await fetch(`${API_URL}${endpoint}`, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+    })
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : 'Network error'
+    throw new Error(
+      `${msg} — check VITE_API_URL (${API_URL}) and that the API is reachable (HTTPS/CORS).`,
+    )
+  }
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ detail: 'Unknown error' }))
-    throw new Error(error.detail || `HTTP error! status: ${response.status}`)
+    const body = await response.json().catch(() => ({}))
+    const detail = (body as { detail?: unknown }).detail
+    throw new Error(
+      formatDetail(detail) || `HTTP error! status: ${response.status}`,
+    )
   }
 
   if (response.status === 204) {

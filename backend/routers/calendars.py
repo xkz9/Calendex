@@ -21,7 +21,12 @@ def create_calendar(calendar: CalendarCreate):
     """Create a new calendar"""
     try:
         supabase = get_supabase_client()
-        response = supabase.table("calendars").insert(calendar.model_dump()).execute()
+        response = (
+            supabase.table("calendars")
+            .insert(calendar.model_dump())
+            .select("*")
+            .execute()
+        )
         if not response.data:
             raise HTTPException(status_code=400, detail="Failed to create calendar")
         return response.data[0]

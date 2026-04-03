@@ -7,11 +7,11 @@ load_dotenv()
 
 app = FastAPI(title="Calendar App API")
 
-# CORS middleware
+# Public JSON API: no cookies — allow any origin so Vercel/mobile always pass CORS.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

@@ -23,7 +23,8 @@ const CalendarList = () => {
       setShowForm(false)
     } catch (error) {
       console.error('Error creating calendar:', error)
-      alert('Failed to create calendar')
+      const msg = error instanceof Error ? error.message : 'Failed to create calendar'
+      alert(`Failed to create calendar: ${msg}`)
     }
   }
 

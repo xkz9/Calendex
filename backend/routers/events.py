@@ -42,7 +42,12 @@ def create_event(event: EventCreate):
         # Times are already strings from frontend
         print(f"Creating event with data: {event_data}")  # Debug logging
         
-        response = supabase.table("events").insert(event_data).execute()
+        response = (
+            supabase.table("events")
+            .insert(event_data)
+            .select("*")
+            .execute()
+        )
         if not response.data:
             print(f"Supabase response had no data: {response}")  # Debug logging
             raise HTTPException(status_code=400, detail="Failed to create event")
